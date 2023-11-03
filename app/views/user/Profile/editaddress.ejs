@@ -1,0 +1,48 @@
+<%- include('../pageHeader') %>
+<section class="address">
+    <div class="addnewaddress">
+        <form method="post">
+                    <div class="input-group">
+                        <div class="input-field">
+                            <input type="text" name="name" value="<%= useraddress.name %>" placeholder="ชื่อผู้รับ" />
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="phone" value="<%= useraddress.phone %>" placeholder="เบอร์โทรศัพท์" />
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="home_number" value="<%= useraddress.home_number %>" placeholder="บ้านเลขที่" />
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="mu_number" value="<%= useraddress.mu_number %>" placeholder="หมู่,(ซอย , ถนน)" />
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="tambun" value="<%= useraddress.tambun %>" placeholder="ตำบล" id="district" />
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="district" value="<%= useraddress.district %>" placeholder="อำเภอ" id="amphoe" />
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="province" value="<%= useraddress.province %>" placeholder="จังหวัด" id="province" />
+                        </div>
+                        <div class="input-field">
+                            <input type="number" name="zip_code" value="<%= useraddress.zip_code %>" placeholder="รหัสไปรษณีย์" id="zipcode" />
+                        </div>
+                    </div>
+            <button class="btn" type="submit">
+               save
+            </button>
+        </form>
+    </div>
+</section>
+<div class="showalerterror">
+    <% if(typeof alert != 'undefined') { %>
+        <% alert.forEach(function(error) { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+                <%= error.msg %>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
+
+
+    <%- include('../pageFooter') %>

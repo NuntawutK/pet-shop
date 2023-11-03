@@ -1,0 +1,45 @@
+<%- include('../pageHeader') %>
+<section class="review">
+<form method="post">
+<div class="rating-box">
+    <header>คุณรู้สึกอย่างไรกับสินค้านี้ ?</header>
+    <div class="stars">
+        <label>
+            <input type="radio" name="rating" value="1" checked>
+            <span class="material-icons material-icons-sharp">star</span>
+        </label>
+        
+        <label>
+            <input type="radio" name="rating" value="2">
+            <span class="material-icons material-icons-sharp">star</span>
+        </label>
+        
+        <label>
+            <input type="radio" name="rating" value="3">
+            <span class="material-icons material-icons-sharp">star</span>
+        </label>
+        
+        <label>
+            <input type="radio" name="rating" value="4">
+            <span class="material-icons material-icons-sharp">star</span>
+        </label>
+        
+        <label>
+            <input type="radio" name="rating" value="5">
+            <span class="material-icons material-icons-sharp">star</span>
+        </label> 
+    </div>
+    <div class="input-field">
+        <textarea type="text" name="comment" placeholder="ความคิดเห็น.." required
+        oninvalid="setCustomValidity('comment is required')"
+        oninput="setCustomValidity('')"></textarea>
+    </div>
+    <div>
+        <button type="submit" class="btn">
+            <span>save</span>
+        </button>
+    </div>
+</div>
+</form>
+</section>
+<%- include('../pageFooter') %>

@@ -1,0 +1,47 @@
+<%- include('../header') %>
+
+    <main>
+        <form method="post">
+        <div class="adduser">
+            <h2>จัดส่งสินค้า : Bill no.<%= orderId %>
+            </h2>
+                <div class="input-group">
+                    <div class="select">
+                        <select name="track_name" class="select-box">
+                            <% DeliveryCompany.forEach((item)=> { %>
+                                <option value="<%= item.id %>">                      
+                                            <%= item.deliverycompany_name %>
+                                </option>
+                                <% }) %>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="track_code" placeholder="เลขติดตามพัสดุ" />
+                    </div>
+                    <h1>วันที่จัดส่ง</h1>
+                    <div class="input-field">
+                        <input type="date" name="delivery_date" />
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="send_remark" placeholder="หมายเหตุ *ถ้ามี*" />
+                    </div>
+                    <div class="btn">
+                        <button type="submit" class="btn">
+                            submit
+                        </button>
+                    </div>
+                </div>
+        </div>
+    </form>
+    </main>
+    <div class="showalert">
+        <% if(typeof alert != 'undefined') { %>
+            <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+                    <%= error.msg %>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+    <%- include('../footer') %>

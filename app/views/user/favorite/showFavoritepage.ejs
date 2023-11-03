@@ -1,0 +1,24 @@
+<%- include('../pageHeader') %>
+
+<section class="categories" id="categories">
+  <h1 class="heading-mt"> สินค้าที่คุณชื่นชอบ </span></h1>
+  <div class="box-container">
+    <% favorites.forEach((item)=> { %>
+    <div class="box">
+      <img src="images/<%= item.img %>" class="card-img-top" height="200px">
+        <h3><%= item.name %></h3>
+        <div class="price">$<%= item.price %></div>
+        <div>
+          <a class="btn" href="/seeproduct/<%= item.id %>"> <span class="material-icons material-icons-sharp">description</span> รายละเอียด</a>
+        </div>
+        <a class="btn" href="/addToCart/<%= item.id %>"> <span class="material-icons material-icons-sharp">add_shopping_cart</span> เพิ่มลงตะกร้า</a>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+
+
+
+
+<%- include('../pageFooter') %>

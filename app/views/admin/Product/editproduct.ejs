@@ -1,0 +1,84 @@
+<%- include('../header') %>
+
+    <main>
+        <form method="post" enctype="multipart/form-data">
+            <div class="addproduct">
+                <h2>เพิ่มรายการ สินค้า</h2>
+                <div class="row">
+                    <div class="input-group">
+                        <h1>หมวดหมู่สินค้า</h1>
+                        <div class="select">
+                            <select name="type_product_id" class="select-box">
+                                <% typeProducts.forEach((typeProduct)=> { %>
+                                    <option value="<%= typeProduct.id %>" <% if
+                                        (product.type_product_id==typeProduct.id) { %>
+                                        selected
+                                        <% } %>
+                                            >
+                                            <%= typeProduct.type %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                        <h1>ประเภทสินค้า</h1>
+                        <div class="select">
+                            <select name="group_product_id" class="select-box">
+                                <% groupProducts.forEach((groupProduct)=> { %>
+                                    <option value="<%= groupProduct.id %>" <% if
+                                        (product.group_product_id==groupProduct.id) { %>
+                                        selected
+                                        <% } %>
+                                            >
+                                            <%= groupProduct.name %>
+                                    </option>
+                                    <% }) %>
+
+                            </select>
+                        </div>
+                        <h1>รูปภาพสินค้า</h1>
+                        <div class="input-field">
+                            <% if (product.img !=undefined) { %>
+                                <img src="../images/<%= product.img %>" width="200px" />
+                                <% } %>
+                                    <input type="file" name="img" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div class="input-group">
+                            <h1>ชื่อสินค้า</h1>
+                            <div class="input-field">
+                                <input type="text" name="name" placeholder="ชื่อสินค้า" value="<%= product.name %>" required
+                                oninvalid="setCustomValidity('product name is required')"
+                                oninput="setCustomValidity('')" />
+                            </div>
+                            <h1>ราคาสินค้า</h1>
+                            <div class="input-field">
+                                <input type="text" name="price" placeholder="price" value="<%= product.price %>" required
+                                oninvalid="setCustomValidity('product price is required')"
+                                oninput="setCustomValidity('')"/>
+                            </div>
+                            <h1>จำนวน</h1>
+                            <div class="input-field">
+                                <input type="number" name="stock" placeholder="จำนวน" value="<%= product.stock %>"
+                                    min="0" disabled />
+                            </div>
+                            <h1>รายละเอียดสินค้า</h1>
+                           <div class="input-field">
+                            <textarea type="text" name="describe"
+                                placeholder="คุณสมบัติสินค้า" required
+                                oninvalid="setCustomValidity('describe is required')"
+                                oninput="setCustomValidity('')"><%= product.describe %></textarea>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn">
+                    <button type="submit" class="btns">
+                        <i class="bi bi-bag-plus-fill"></i>
+                        save
+                    </button>
+                </div>
+        </form>
+    </main>
+
+    <%- include('../footer') %>

@@ -1,0 +1,42 @@
+<%- include('../header') %>
+
+<main>
+    <div class="recent-orders">
+        <h2>รายงานยอดขาย</h2>
+        <form method="get">
+            <div class="select-day">
+            <h1>ปี</h1>
+                <select name="year" class="custom-select">
+                    <% arrYears.forEach(item => { %>
+                    <option value="<%= item %>" <% if (item == y) { %> selected <% } %>> <%= item %></option>
+                    <% }) %>
+                </select>
+            <h1>เดือน</h1>
+                <select name="month" class="custom-select">
+                    <% arrMonths.forEach((item, index) => { %>
+                    <option value="<%= index + 1 %>"<% if (index + 1 == m) { %> selected <% } %>><%= item %></option>
+                    <% }) %>
+                </select>
+                <button type="submit" class="btns">แสดงข้อมูล</button>
+            </div>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>วันที่</th>
+                    <th>ยอดขาย</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% arr.forEach((item, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= numeral(item).format() %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<%- include('../footer') %>

@@ -1,0 +1,124 @@
+<%- include('../pageHeader') %>
+
+<section class="home" id="home">
+  <div class="content">
+  </div>  
+</section>
+<section class="features" id="features">
+
+    <div class="box-container">
+      <div class="box">
+        <img src="../designimg/Why_Fair_Trade_38d1e988ce.png" alt="">
+        <h3>fresh and organic</h3>
+        <p>กระบานการผลิตและวัตถุดิบที่สะอาดถูกหลักอนามัย</p>
+        <button class="btn" onclick="openPopup()">read more</button>
+      </div>
+      <div class="box">
+        <img src="../designimg/14.05.2019-delivery-4-.jpg" alt="">
+        <h3>Delivery</h3>
+        <p>Shopping Online ส่งตรงถึงบ้านคุณ</p>
+        <button class="btn" onclick="openPopup2()">read more</button>
+      </div>
+      <div class="box">
+        <img src="../designimg/online-payment-cartoon-flat_81534-1230.webp" alt="">
+        <h3>Payment</h3>
+        <p>ชำระเงินได้ง่ายๆ เพียงแค่ปลายนิ้ว</p>
+        <button class="btn" onclick="openPopup3()">read more</button>
+      </div>
+      <div class="popup" id="popup">
+        <img src="../designimg/Why_Fair_Trade_38d1e988ce.png" alt="">
+        <h2>fresh and organic</h2>
+        <p>กระบานการผลิตและวัตถุดิบที่สะอาดถูกหลักอนามัย 
+          อาหารที่ผ่านการผลิตทางการเกษตรโดยไม่ใช้สารเคมี ปุ๋ยเคมี 
+          หรือวัตถุสังเคราะห์ใด ๆ ทั้งสิ้น (รวมไปถึงเมล็ดพันธุ์ที่ไม่ตัดต่อทางพันธุกรรม) 
+          กระบวนการผลิตไม่มีการใช้สารเคมีในการกำจัดศัตรูพืช 
+          ก่อนการปลูกจะต้องเตรียมหน้าดินก่อนด้วยวิธีธรรมชาติ 
+          ทุกขั้นตอนการผลิตจะไร้สารปนเปื้อนที่เกิดจากโรงงานอุตสาหกรรมหรือมนุษย์ 
+          จะไม่ผ่านการฉายรังสี ไม่เพิ่มเติมสิ่งปรุงแต่งลงไปในอาหาร 
+          ถ้าเป็นอาหารที่มาจากการทำปสุสัตว์ก็จะต้องไม่มีการใช้สารปฏิชีวภาพ 
+          ไม่ใช้สารเร่งฮอร์โมน และต้องเลี้ยงสัตว์ด้วยอาหารที่มีสุขอนามัย
+        </p>
+        <button type="button" onclick="closePopup()">close</button>
+      </div>
+      <div class="popup" id="popup2">
+        <img src="../designimg/14.05.2019-delivery-4-.jpg" alt="">
+        <h2>fresh and organic</h2>
+        <p >
+          <br> 1. พนักงานทำความสะอาดและฆ่าเชื้อก่อนและหลังปฏิบัติงาน
+          <br> 2. พนักงานทำความสะอาดอุปกรณ์ทุกครั้งก่อนและหลังปฏิบัติงาน
+          <br> 3. พนักงานสวมหน้ากากอนามัยและถุงมือในการจัดส่งสินค้า
+          <br> 4. พนักงานยืนห่างจากลูกค้าอย่างน้อย 2 เมตร (Social Distancing)
+          <br> 5. ลูกค้าหยิบสินค้าด้วยตัวเอง โดยพนักงานจัดส่งวางสินค้าไว้จุดที่ลูกค้าต้องการ
+          <br> 6. แนะนำลูกค้าเลือกการชำระด้วยบัตรเครดิตและบัตรเดบิตออนไลน์ เพื่อลดการสัมผัส
+        </p>
+        <button type="button" onclick="closePopup2()">close</button>
+      </div>
+      <div class="popup" id="popup3">
+        <img src="../designimg/online-payment-cartoon-flat_81534-1230.webp" alt="">
+        <h2>e-Payment ระบบชำระเงินออนไลน์</h2>
+        <p >บริการช่องทางชำระเงินออนไลน์ที่หลากหลาย
+          เพื่อการเข้าถึงลูกค้าของคุณได้ทั่วทุกมุมโลก เพื่อประสบการณ์ในการซื้อ ขาย และจ่ายเงินออนไลน์แบบไร้รอยต่อ 
+          ลูกค้าสามารถเลือกช่องทางในการชำระเงินออนไลน์ได้หลากหลายตามความต้องการ 
+          <br> 1. บัตรเครดิตและบัตรเดบิต (Credit, Debit Card)
+          <br> 2. อินเตอร์เน็ต / โมบายล์แบงกิ้ง (Internet Banking)
+          <br> 3. ทรูมันนี่วอลเล็ท (True Money Wallet)
+        </p>
+        <button type="button" onclick="closePopup3()">close</button>
+      </div>
+      </div>
+    </div>
+
+</section>
+
+<section class="products" id="products">
+  <div class="swiper product-slider">
+    <div class="swiper-wrapper">
+      <% products.forEach((product)=> { %>
+      <div class="swiper-slide box">
+        <img src="images/<%= product.img %>" class="card-img-top" height="200px">
+        <h3><%= product.name %></h3>
+        <a class="btn" href="#categories">shop now</a>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="categories" id="categories">
+  <div id="box">
+    <% typeProducts.forEach((item) => { %> 
+    <a class="btn" href="/?typeProductId=<%= item.id %>#categories"><%= item.type %></a>
+  <% }) %>
+  </div>
+  <div id="box">
+    <% groupProducts.forEach((item) => { %> 
+    <a class="btn" href="/?groupProductId=<%= item.id %>#categories"><%= item.name %></a>
+  <% }) %>
+  </div>
+  <div class="box-container">
+    <% products.forEach((product)=> { %>
+    <div class="box">
+      <img src="images/<%= product.img %>" class="card-img-top" height="200px">
+        <h3><%= product.name %></h3>
+        <div class="price">$<%= product.price %></div>
+        <div>
+          <a class="btn" href="/seeproduct/<%= product.id %>"> <span class="material-icons material-icons-sharp">description</span> รายละเอียด</a>
+        </div>
+        <% if (product.stock > 0 ) { %>
+          <a class="btn" href="/addToCart/<%= product.id %>"> <span class="material-icons material-icons-sharp">add_shopping_cart</span> เพิ่มลงตะกร้า</a>
+      <% } %>
+      <% if (product.stock == 0 ) { %>
+        <a class="btn"><span class="material-icons material-icons-sharp">production_quantity_limits</span>สินค้าหมด</a>
+    <% } %>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+
+
+
+
+<%- include('../pageFooter') %>
+
+

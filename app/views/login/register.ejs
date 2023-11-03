@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/register.css' />
+    <script src="https://kit.fontawesome.com/bcc88c6bd9.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&display=swap" rel="stylesheet">
+    <title>Sign up</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h1>Create Account</h1>         
+            <form method="post" action="/register" > 
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" name="name" placeholder="Name" id="name"/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-paw"></i>
+                        <input type="text" name="username" placeholder="Username" id="username"/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" name="pwd" placeholder="Password" id="password"/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="text" name="email" placeholder="Email" id="email"/>
+                    </div>
+                </div>
+                <div class="btn-fields">
+                    <button type="submit" class="btn btn-info">
+                        Sign in
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    <div class="showalert">
+        <% if(typeof alert != 'undefined') { %>
+            <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+                    <%= error.msg %>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+    <script src="/javascripts/registerscript.js"></script>
+</body>
+</html>

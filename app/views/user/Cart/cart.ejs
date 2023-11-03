@@ -1,0 +1,62 @@
+<%- include('../pageHeader') %>
+<section>
+    <div class="cart-container cart-page">
+        <h3>My cart
+            <span class="material-icons material-icons-sharp">
+            local_mall
+            </span></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th></th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach((product) => { %>
+                <tr>
+                    <td><img src="images/<%= product.img %>" width="150px" /></td>
+                    <td><%= product.name %></td>
+                    <td><%= numeral(product.price).format() %></td>
+                    <td><%= product.qty %> <a href="/editItemInCart/<%= product.id %>">edit
+                        
+                    </a></td>
+                    <td><%= numeral(product.qty * product.price).format() %></td>
+                    <td>
+                        <a href="/deleteItem/<%= product.id %>" onclick="return confirm('คุณแน่ใจที่จะลบหรือไม่?')">
+                            <span class="material-icons material-icons-sharp">delete</span>
+                        </a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table> 
+        <div class="total-price">
+        <table>
+                <tr>
+                    <td>Total Quantity:</td>
+                    <td><%= totalQty %></td>
+                </tr>
+                <tr>
+                    <td>Total Price:</td>
+                    <td>$ <%= numeral(totalPrice).format() %></td>
+                </tr>
+                <% if (totalQty > 0) { %>
+                <tr>
+                    <td>confirm your order:</td>
+                    <td><a href="/confirmOrder">
+                        confirm order <span class="material-icons material-icons-sharp">fact_check</span>
+                    </a></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        </div> 
+    </div>
+</section>
+
+<%- include('../pageFooter') %>

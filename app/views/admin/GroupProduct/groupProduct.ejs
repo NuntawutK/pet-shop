@@ -1,0 +1,79 @@
+<%- include('../header') %>
+<main>
+<div class="recent-orders">
+    <div class="card-body">
+        <h2 class="card-title">หมวดหมู่สินค้า</h2>
+        <div class="mt-3">
+            <a class="btn btn-info" href="/addtypeProduct">
+                <span class="material-icons-sharp">
+                    add
+                    </span>
+                เพิ่มรายการ
+            </a>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>ชื่อหมวดหมู่สินค้า</th>
+                        <th width="300px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% typeProducts.forEach((typeProduct) => { %>
+                        <tr>
+                            <td><%= typeProduct.type %></td>
+                            <td class="text-center">
+                                <a class="btn btn-warning" href="/edittypeProduct/<%= typeProduct.id %>">
+                                    <i class='bx bx-edit icon'></i>
+                                </a>
+                                <a class="btn btn-danger" href="/deletetypeProduct/<%= typeProduct.id %>" onclick="return confirm('คุณแน่ใจที่จะลบหรือไม่?')">
+                                    <i class='bx bxs-trash icon' ></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+</div>
+
+<div class="recent-orders">
+    <div class="card-body">
+        <h2 class="card-title">ประเภทสินค้า</h2>
+        <div class="mt-3">
+            <a class="btn btn-info" href="/addgroupProduct">
+                <span class="material-icons-sharp">
+                    add
+                    </span>
+                เพิ่มรายการ
+            </a>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>ชื่อประเภทสินค้า</th>
+                        <th width="300px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% groupProducts.forEach((groupProduct) => { %>
+                        <tr>
+                            <td><%= groupProduct.name %></td>
+                            <td class="text-center">
+                                <a class="btn btn-warning" href="/editgroupProduct/<%= groupProduct.id %>">
+                                    <i class='bx bx-edit icon'></i>
+                                </a>
+                                <a class="btn btn-danger" href="/deletegroupProduct/<%= groupProduct.id %>" onclick="return confirm('คุณแน่ใจที่จะลบหรือไม่?')">
+                                    <i class='bx bxs-trash icon' ></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+</div>
+</main>
+<%- include('../footer') %>

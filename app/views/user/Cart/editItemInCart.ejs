@@ -1,0 +1,16 @@
+<%- include('../pageHeader') %>
+
+<section class="features" id="features">
+<div class="cart-editpage">
+    <form method="post">
+    <div class="h3"><img src="../images/<%= product.img %>" width="200px" /></div>
+    <div class="h3">product : <%= product.name %></div>
+    <div class="h3">Price : <%= numeral(product.price).format() %></div>
+    <div class="h3">Quantity : <input type="number"  name="qty" value="<%= product.qty %>" class="form-control"  min="1"></div>
+    <button class="btn"><a href="/cart">back</a></button>
+    <button type="submit" class="btn">save</button>
+    </form>
+</div>
+</section>
+
+<%- include('../pageFooter') %>

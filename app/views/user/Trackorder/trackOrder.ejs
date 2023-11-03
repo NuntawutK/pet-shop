@@ -1,0 +1,83 @@
+<%- include('../pageHeader') %>
+
+    <form method="post">
+        <section class="features">
+            <div class="box-container">
+                <div class="box-track">
+                    <h3>ที่อยู่ของฉัน</h3>
+                        <% uaddress.forEach((useraddress)=> { %>
+                        <div class="h3icons">
+                            <a href="/editaddress/<%= useraddress.id %>"><i class="fas fa-edit"></i></a>
+                            <a href="/deleteaddress/<%= useraddress.id %>" onclick="return confirm('คุณแน่ใจที่จะลบหรือไม่?')"><i class="fas fa-trash"></i></a>
+                        </div>
+                        <div class="h3">
+                            <%= useraddress.name %>
+                            เบอร์โทรศัพท์: <%= useraddress.phone %>
+                        </div>
+                        <div class="h3">
+                            บ้านเลขที่ <%= useraddress.home_number %>
+                                หมู่ <%= useraddress.mu_number %>
+                                    ตำบล<%= useraddress.tambun %>
+                        </div>
+                        <div class="h3b">
+                            อำเภอ<%= useraddress.district %>,
+                                จังหวัด<%= useraddress.province %>,
+                                    <%= useraddress.zip_code %>
+                        </div>
+                        <% }) %>
+                            <a class="btn" href="/addNewaddress">
+                                <span class="material-icons material-symbols-outlined">
+                                    add_box
+                                </span>
+                                Add
+                            </a>
+                </div>
+                <div class="box-trackphone">
+                    <h3>กรอกเบอร์โทรศัพท์</h3>
+                    <input class="form-control" name="phone" />
+                    <button type="submit" class="btn btn-info">
+                        <span class="material-icons material-symbols-outlined">
+                            search
+                        </span>
+                        search
+                    </button>
+                </div>
+            </div>
+
+            <% if (orders.length> 0) { %>
+                <div class="cart-container cart-page">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ชื่อผู้รับ</th>
+                                <th>รหัสติดตามพัสดุ</th>
+                                <th>บริษัทขนส่ง</th>
+                                <th>วันที่จัดส่ง</th>
+                            </tr>
+
+                        </thead>
+                        <% orders.forEach((order)=> { %>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <%= order.name %>
+                                    </td>
+                                    <td>
+                                        <%= order.track_code %>
+                                    </td>
+                                    <td>
+                                        <%= order.deliverycompany_name %>
+                                    </td>
+                                    <td>
+                                        <%= dayjs(order.delivery_date).format(dayFormat) %>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <% }) %>
+                    </table>
+                </div>
+                <% } %>
+        </section>
+    </form>
+
+    <%- include('../pageFooter') %>

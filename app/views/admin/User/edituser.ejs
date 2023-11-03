@@ -1,0 +1,51 @@
+<%- include('../header') %>
+
+    <main>
+        <div class="adduser">
+            <form method="post">
+                <h2>แก้ไขข้อมูลผู้ใช้งาน</h2>
+                <div class="input-group">
+                    <div class="input-field">
+                        <input type="text" name="name" value="<%= user.name %>" placeholder="name" />
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="username" value="<%= user.username %>" placeholder="username" />
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="email" value="<%= user.email %>" placeholder="email" />
+                    </div>
+                    <div class="radio-title-group">
+                    <div class="radiogroup">
+                        <input type="radio" name="level" value="user" <% if (user.level=='user' ) { %>checked <% }%> />
+                            <div class="radiotitle">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <label for="user">user</label>
+                            </div>
+                    </div>
+                    <div class="radiogroup">
+                        <input type="radio" name="level" value="admin" <% if (user.level=='admin' ) { %>checked <% } %>
+                            />
+                            <div class="radiotitle">
+                                <ion-icon name="desktop-outline"></ion-icon>
+                                <label for="admin">admin</label>
+                            </div>
+                    </div>
+                </div>
+                <div class="btn">
+                    <button type="submit" class="btn">  save  
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <div class="showalert">
+        <% if(typeof alert != 'undefined') { %>
+            <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+                    <%= error.msg %>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+    <%- include('../footer') %>

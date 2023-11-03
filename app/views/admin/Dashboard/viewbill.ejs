@@ -1,0 +1,61 @@
+<%- include('../header') %>
+
+<main>
+    <div class="recent-orders">
+        <h1>รายละเอียดการสั่งสินค้า</h1>
+        <div class="address">
+            <h2>ที่อยู่ในการจัดส่ง</h2>
+        <% address.forEach((item) => { %> 
+            <div>ชื่อ: <%= item.name %>, เบอร์โทรศัพท์: <%= item.phone %></div>
+            <div> บ้านเลขที่: <%= item.home_number %>, หมู่: <%= item.mu_number %> </div>
+            <div>ตำบล: <%= item.tambun %>, อำเภอ: <%= item.district %> </div>
+            <div>จังหวัด: <%= item.province %>, รหัสไปรษณีย์: <%= item.zip_code %></div>
+             
+        </div>
+        <table class="productpage">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orderDetails.forEach((orderDetail) => { %>
+                <tr>
+                    <td><img src="../images/<%= orderDetail.img %>" width="150px" /></td>
+                    <td><%= orderDetail.name %></td>
+                    <td><%= numeral(orderDetail.price).format() %></td>
+                    <td><%= numeral(orderDetail.qty).format() %></td>
+                    <td><%= numeral(orderDetail.qty * orderDetail.price).format() %></td>
+                </tr>
+                <% }) %>
+                
+            </tbody>
+        </table>
+    
+        <table class="total-price">
+                <tr>
+                    <td class="text-left">Total Quantity:</td>
+                    <td><%= numeral(totalQty).format() %> ชิ้น</td>
+                </tr>
+                <tr>
+                    <td class="text-left">Total Price:</td>
+                    <td>$ <%= numeral(totalPrice).format() %> บาท</td>
+                </tr>
+        </table> 
+        <div class="payment">
+            <h2>ข้อมูลการชำระเงิน</h2>
+            <div>สถานะการชำระเงิน: <%= item.status %></div>
+            <div>รหัสอ้างอิง: <%= item.session_id %></div>
+            <div>วันที่ชำระ: <%= dayjs(item.pay_date).format(dayFormat) %></div>
+            <% })%>
+        </div>
+    </div>
+    
+
+</main>
+
+<%- include('../footer') %>

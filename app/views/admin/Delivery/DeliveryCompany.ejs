@@ -1,0 +1,41 @@
+<%- include('../header') %>
+<main>
+<div class="recent-orders">
+    <div class="card-body">
+        <h2 class="card-title">บริษัทขนส่งพัสดุ</h2>
+        <div class="mt-3">
+            <a class="btn btn-info" href="/addDeliveryCompany">
+                <span class="material-icons-sharp">
+                    add
+                    </span>
+                เพิ่มรายการ
+            </a>
+
+            <table class="table table-bordered table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>ชื่อบริษัทขนส่งพัสดุ</th>
+                        <th width="300px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% DeliveryCompany.forEach((item) => { %>
+                        <tr>
+                            <td><%= item.deliverycompany_name %></td>
+                            <td class="text-center">
+                                <a class="btn btn-warning" href="/editDeliveryCompany/<%= item.id %>">
+                                    <i class='bx bx-edit icon'></i>
+                                </a>
+                                <a class="btn btn-danger" href="/deleteDeliveryCompany/<%= item.id %>" onclick="return confirm('คุณแน่ใจที่จะลบหรือไม่?')">
+                                    <i class='bx bxs-trash icon' ></i>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table> 
+        </div>
+    </div>
+</div>
+</main>
+<%- include('../footer') %>

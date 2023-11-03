@@ -1,0 +1,50 @@
+<%- include('../header') %>
+
+    <main>
+        <form method="post">
+            <div class="recent-orders">
+                <h2>สินค้า</h2>
+                    <a class="btn" href="/addproduct">
+                        <span class="material-icons-sharp">
+                            add
+                            </span>
+                        เพิ่มรายการ
+                    </a>
+                    <table class="productpage table">
+                        <thead>
+                            <tr>
+                                <th>รูปสินค้า</th>
+                                <th>รายการสินค้า</th>
+                                <th class="hid">ราคา</th>
+                                <th class="hid">จำนวนคงเหลือ</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% products.forEach((product)=> { %>
+                                <tr>
+                                    <td><img src="images/<%= product.img %>"/></td>
+                                    <td><%= product.name %></td>
+                                    <td class="hid"><%= numeral(product.price).format() %></td>
+                                    <td class="hid"><%= numeral(product.stock).format() %></td>
+                                    <td>
+                                        <a class="btn" href="/addstock/<%= product.id %>">
+                                            <i class='bx bx-donate-heart icon'></i>
+                                        </a>
+                                        <a class="btn" href="/editproduct/<%= product.id %>">
+                                            <i class='bx bx-edit icon'></i>
+                                        </a>
+                                        <a class="btn"
+                                            href="/deleteproduct/<%= product.id %>/<%= product.img %>"
+                                            onclick="return confirm('คุณแน่ใจที่จะลบหรือไม่?')">
+                                            <i class='bx bxs-trash icon' ></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+            </div>
+        </form>
+    </main>
+    <%- include('../footer') %>

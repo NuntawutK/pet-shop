@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/login.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600&display=swap" rel="stylesheet">
+    <title>login</title>
+</head>
+
+<body>
+    <img class="wave" src="../designimg/Blue White Minimalist Furniture Product Presentation.png">
+    <div class="container">
+        <div class="img">
+            <img src="../designimg/womenphone.png">
+        </div>
+        <div class="login-container">
+            <form method="post" action="/login">
+                <img class="avatar" src="../designimg/catcom.png">
+                <h2>Welcome</h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h5>Username</h5>
+                        <input class="input" type="text" name="username" placeholder="Username">
+                    </div>
+                </div>
+                <div class="input-div two">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <h5>Password</h5>
+                        <input class="input" type="password" name="pwd" placeholder="Password">
+                    </div>
+                </div>
+                <a href="/register">go to register</a>
+                <a href="/forgetpassword">Forgot Password?</a>
+                <input type="submit" class="btn" value="Login">
+            </form>
+        </div>
+    </div>
+    <div class="showalert">
+        <% if(typeof alert != 'undefined') { %>
+            <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+                    <%= error.msg %>
+                </div>
+            <% }) %>
+        <% } %>
+    <script src="/javascripts/loginscript.js"></script>
+</body>
+
+</html>

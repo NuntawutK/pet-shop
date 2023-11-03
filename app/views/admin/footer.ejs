@@ -1,0 +1,18 @@
+
+
+    <script src="/javascripts/adminscript.js"></script>
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'editor' );
+    </script>
+    <script>let table = $('.table').DataTable({
+        // Define the column to sort by 'id' in descending order (from high to low)
+        order: [[0, 'desc']] // Change the column index if needed
+    });
+    </script>
+</body>
+
+</html>

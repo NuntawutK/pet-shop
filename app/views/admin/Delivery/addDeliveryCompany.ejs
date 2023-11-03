@@ -1,0 +1,28 @@
+<%- include('../header') %>
+<main>
+    <div class="adduser">
+    <form method="post">
+                <h1>เพิ่มรายการ บริษัทขนส่งพัสดุ</h1>
+                <div class="input-group">
+                    <div class="input-field">
+                     <input type="text" name="deliverycompany_name" placeholder="name" value="<%= DeliveryCompany.deliverycompany_name %>" />
+                </div>
+                <div class="btn">
+                    <button type="submit" class="btns">
+                        Add
+                    </button>
+                </div>
+            </div>
+    </form>
+    </div>
+</main>
+<div class="showalert">
+    <% if(typeof alert != 'undefined') { %>
+        <% alert.forEach(function(error) { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+                <%= error.msg %>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
+<%- include('../footer') %>

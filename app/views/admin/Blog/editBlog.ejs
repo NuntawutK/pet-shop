@@ -1,0 +1,36 @@
+<%- include('../header') %>
+
+    <main>
+        <form method="post" enctype="multipart/form-data">
+        <div class="addproduct">
+            
+                <h2>แก้ไขบทความ</h2>
+                <div class="input-group">
+                    <h1>รูปภาพ</h1>
+                        <div class="input-field">
+                            <% if (blog.img != undefined) { %>
+                                <img src="../designimg/<%= blog.img %>" width="200px" />
+                                <% } %>
+                                    <input type="file" name="img" class="form-control" />
+                        </div>
+                    <div class="input-field">
+                        <input type="text" name="title" value="<%= blog.title %>" placeholder="title" required
+                        oninvalid="setCustomValidity('title is required')"
+                        oninput="setCustomValidity('')"/>
+                    </div>
+                    <div class="">
+                        <textarea class="blog" type="text" name="detail" id="editor" placeholder="detail" required
+                        oninvalid="setCustomValidity('detail is required')"
+                        oninput="setCustomValidity('')"><%= blog.detail %></textarea>
+                    </div>
+
+                </div>
+                <div class="btn">
+                    <button type="submit" class="btns">  save  
+                    </button>
+                </div>
+        </div>
+    </form>
+    </main>
+
+    <%- include('../footer') %>

@@ -1,0 +1,36 @@
+<%- include('../pageHeader') %>
+
+
+<section class="address">
+    <div class="addnewaddress">
+        <form method="post" action="/userProfile">
+            <h2>Edit Profile</h2>
+            <div class="input-group">
+                <div class="input-field">
+                    <input type="text" name="name" value="<%= user.name %>" placeholder="name" />
+                </div>
+                <div class="input-field">
+                    <input type="text" name="username" value="<%= user.username %>" placeholder="username" />
+                </div>
+                <div class="input-field">
+                    <input type="text" name="email" value="<%= user.email %>" placeholder="email" />
+                </div>
+            </div>
+            <button class="btn" type="submit">
+                save
+            </button>
+        </form>
+    </div>
+</section>
+<div class="showalerterror">
+    <% if(typeof alert != 'undefined') { %>
+        <% alert.forEach(function(error) { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+                <%= error.msg %>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
+
+
+<%- include('../pageFooter') %>

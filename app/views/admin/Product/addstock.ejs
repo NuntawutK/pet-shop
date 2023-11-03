@@ -1,0 +1,46 @@
+<%- include('../header') %>
+
+    <main>
+        <form method="post">
+            <div class="addproduct">
+                <h2>เพิ่มจำนวนสินค้า</h2>
+                <div class="row">
+                    <div class="input-group">
+                        <div class="input-field">
+                            <% if (product.img !=undefined) { %>
+                                <img src="../images/<%= product.img %>" width="200px" />
+                                <% } %>
+                        </div>
+                    </div>
+                <div class="row2">
+                    <div class="input-group">
+                        <h1>ชื่อสินค้า</h1>
+                            <div class="input-field">
+                                <input type="text" name="name" placeholder="ชื่อสินค้า" value="<%= product.name %>" disabled/>
+                            </div>
+                            <h1>ราคาสินค้า</h1>
+                            <div class="input-field">
+                                <input type="text" name="price" placeholder="price" value="<%= product.price %>" disabled/>
+                            </div>
+                        <div class="input-field">
+                            <input type="number" name="stock" placeholder="จำนวน" min="0" required
+                            oninvalid="setCustomValidity('stock is required')"
+                            oninput="setCustomValidity('')" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="btn">
+                <button type="submit" class="btns">
+                    <i class="bi bi-bag-plus-fill"></i>
+                    Add To Stock
+                </button>
+            </div>
+            </div>
+
+
+        </form>
+    </main>
+
+    <%- include('../footer') %>

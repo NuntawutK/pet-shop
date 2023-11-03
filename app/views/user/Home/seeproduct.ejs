@@ -1,0 +1,214 @@
+<%- include('../pageHeader') %>
+
+    <section id="productdetails" class="section-p1">
+        <% if (product.img !=undefined) { %>
+            <div class="images">
+                <img src="../images/<%= product.img %>" width="100%" alt="">
+            </div>
+            <% } %>
+                <div class="pdetails">
+                    <h4>
+                        <%= product.name %>
+                    </h4>
+                    <h2>$<%= product.price %>
+                    </h2>
+                    <h1>จำนวนคงเหลือ : <%= product.stock %>
+                    </h1>
+                    <% if (product.stock > 0 ) { %>
+                        <a class="btn" href="/addToCart/<%= product.id %>"> <span class="material-icons material-icons-sharp">add_shopping_cart</span>เพิ่มลงตะกร้า</a>
+                    <% } %>
+                    <% if (product.stock == 0 ) { %>
+                      <a class="btn"><span class="material-icons material-icons-sharp">production_quantity_limits</span>สินค้าหมด</a>
+                  <% } %>
+                    <form action="/addfavorite/<%= product.id %>" method="POST">
+                        <button type="submit" class="btn">
+                            <span class="material-icons material-icons-sharp">favorite</span>
+                        </button>
+                    </form>
+                    <h4>รายละเอียดสินค้า</h4>
+                    <span>
+                        <%= product.describe %>
+                    </span>
+                </div>
+    </section>
+    
+        <section class="reviews" id="reviews">
+        <div class="heading">
+                <h1 >รีวิวสินค้า</h1>
+            </div>
+            <div class="review-box-container">
+                
+            <% review.forEach((item)=> { %>
+                <div class="review-box">
+                    <div class="box-top">
+                        <div class="profile">
+                            <div class="name-user">
+                                <strong>
+                                    <%= item.name %>
+                                </strong>
+                                <span><%= dayjs(item.date).format(dayFormat) %></span>
+                            </div>
+                        </div>
+
+                        <% if (item.rating=='1' ) { %>
+                            <div class="starsresulte">
+                                <label>
+                                    <div type="radio" name="rating" value="1"></div>
+                                    <span class="material-icons material-icons-sharp">star</span>
+                                </label>
+                                <label>
+                                    <div type="radio" name="rating" value="2"></div>
+                                    <span class="material-icons material-icons-sharp no">star</span>
+                                </label>
+                                <label>
+                                    <div type="radio" name="rating" value="3"></div>
+                                    <span class="material-icons material-icons-sharp no">star</span>
+                                </label>
+                                <label>
+                                    <div type="radio" name="rating" value="4"></div>
+                                    <span class="material-icons material-icons-sharp no">star</span>
+                                </label>
+                                <label>
+                                    <div type="radio" name="rating" value="5"></div>
+                                    <span class="material-icons material-icons-sharp no">star</span>
+                                </label>
+                            </div>
+                            <% } %>
+                                <% if (item.rating=='2' ) { %>
+                                    <div class="starsresulte">
+                                        <label>
+                                            <div type="radio" name="rating" value="1"></div>
+                                            <span class="material-icons material-icons-sharp">star</span>
+                                        </label>
+                                        <label>
+                                            <div type="radio" name="rating" value="2"></div>
+                                            <span class="material-icons material-icons-sharp">star</span>
+                                        </label>
+                                        <label>
+                                            <div type="radio" name="rating" value="3"></div>
+                                            <span class="material-icons material-icons-sharp no">star</span>
+                                        </label>
+                                        <label>
+                                            <div type="radio" name="rating" value="4"></div>
+                                            <span class="material-icons material-icons-sharp no">star</span>
+                                        </label>
+                                        <label>
+                                            <div type="radio" name="rating" value="5"></div>
+                                            <span class="material-icons material-icons-sharp no">star</span>
+                                        </label>
+                                    </div>
+                                    <% } %>
+                                        <% if (item.rating=='3' ) { %>
+                                            <div class="starsresulte">
+                                                <label>
+                                                    <div type="radio" name="rating" value="1"></div>
+                                                    <span class="material-icons material-icons-sharp">star</span>
+                                                </label>
+                                                <label>
+                                                    <div type="radio" name="rating" value="2"></div>
+                                                    <span class="material-icons material-icons-sharp">star</span>
+                                                </label>
+                                                <label>
+                                                    <div type="radio" name="rating" value="3"></div>
+                                                    <span class="material-icons material-icons-sharp">star</span>
+                                                </label>
+                                                <label>
+                                                    <div type="radio" name="rating" value="4"></div>
+                                                    <span class="material-icons material-icons-sharp no">star</span>
+                                                </label>
+                                                <label>
+                                                    <div type="radio" name="rating" value="5"></div>
+                                                    <span class="material-icons material-icons-sharp no">star</span>
+                                                </label>
+                                            </div>
+                                            <% } %>
+                                                <% if (item.rating=='4' ) { %>
+                                                    <div class="starsresulte">
+                                                        <label>
+                                                            <div type="radio" name="rating" value="1"></div>
+                                                            <span
+                                                                class="material-icons material-icons-sharp">star</span>
+                                                        </label>
+                                                        <label>
+                                                            <div type="radio" name="rating" value="2"></div>
+                                                            <span
+                                                                class="material-icons material-icons-sharp">star</span>
+                                                        </label>
+                                                        <label>
+                                                            <div type="radio" name="rating" value="3"></div>
+                                                            <span
+                                                                class="material-icons material-icons-sharp">star</span>
+                                                        </label>
+                                                        <label>
+                                                            <div type="radio" name="rating" value="4"></div>
+                                                            <span
+                                                                class="material-icons material-icons-sharp">star</span>
+                                                        </label>
+                                                        <label>
+                                                            <div type="radio" name="rating" value="5"></div>
+                                                            <span
+                                                                class="material-icons material-icons-sharp no">star</span>
+                                                        </label>
+                                                    </div>
+                                                    <% } %>
+                                                        <% if (item.rating=='5' ) { %>
+                                                            <div class="starsresulte">
+                                                                <label>
+                                                                    <div type="radio" name="rating" value="1"></div>
+                                                                    <span
+                                                                        class="material-icons material-icons-sharp">star</span>
+                                                                </label>
+                                                                <label>
+                                                                    <div type="radio" name="rating" value="2"></div>
+                                                                    <span
+                                                                        class="material-icons material-icons-sharp">star</span>
+                                                                </label>
+                                                                <label>
+                                                                    <div type="radio" name="rating" value="3"></div>
+                                                                    <span
+                                                                        class="material-icons material-icons-sharp">star</span>
+                                                                </label>
+                                                                <label>
+                                                                    <div type="radio" name="rating" value="4"></div>
+                                                                    <span
+                                                                        class="material-icons material-icons-sharp">star</span>
+                                                                </label>
+                                                                <label>
+                                                                    <div type="radio" name="rating" value="5"></div>
+                                                                    <span
+                                                                        class="material-icons material-icons-sharp">star</span>
+                                                                </label>
+                                                            </div>
+                                                            <% } %>
+                    </div>
+                    <div class="comment">
+                        <p><%= item.comment %></p>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+
+    </section>
+    <section class="categories" id="categories">
+        <div>
+            <h1 class="heading"> สินค้าที่คุณอาจชื่นชอบ</h1>
+        </div>
+        <div class="box-container">
+            <% relatedProducts.forEach((relatedProduct)=> { %>
+                <div class="box">
+                    <img src="../images/<%= relatedProduct.img %>" class="card-img-top" height="200px">
+                    <h3>
+                        <%= relatedProduct.name %>
+                    </h3>
+                    <div class="price">$<%= relatedProduct.price %>
+                    </div>
+                    <div>
+                        <a class="btn" href="/seeproduct/<%= relatedProduct.id %>"> <span
+                                class="material-icons material-icons-sharp">description</span> รายละเอียด</a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </section>
+
+    <%- include('../pageFooter') %>

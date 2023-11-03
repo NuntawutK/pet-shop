@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>admin</title>
+    <link rel='stylesheet' href='/stylesheets/adminstyle.css' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <% if (session.token != undefined) { %>
+   <nav class="sidebar close">
+    <header>
+        <div class="image-text">
+            <span class="image">
+                <img src="../designimg/OIP.jfif" alt="logo">
+            </span>
+            <div class="text header-text">
+                <span class="name">Hey, <%= session.username %></span>
+                <span class="profession">Role: <%= session.level %></span>
+            </div>
+        </div>
+        <i class='bx bx-chevron-right toggle' ></i>
+    </header>
+
+    <div class="menu-bar">
+        <div class="menu">
+            <ul class="menu-links">
+                <li class="nav-link">
+                    <a href="/home">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/reportSalePerDay">
+                        <i class='bx bx-money-withdraw icon'></i>
+                        <span class="text nav-text">Report</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/order">
+                        <i class='bx bx-receipt icon'></i>
+                        <span class="text nav-text">Order</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/user">
+                        <i class='bx bxs-group icon'></i>
+                        <span class="text nav-text">Our user</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/product">
+                        <i class='bx bxs-package icon'></i>
+                        <span class="text nav-text">Our Product</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/groupProduct">
+                        <i class='bx bxs-component icon'></i>
+                        <span class="text nav-text">Group Product</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/showBlog">
+                        <i class='bx bxl-blogger icon'></i>
+                        <span class="text nav-text">Blog</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/deliveryCompany">
+                        <i class='bx bxs-bus icon'></i>
+                        <span class="text nav-text">delivery Company</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="bottom-content">
+            <li class="">
+                <a href="/logout" onclick="return confirm('Are you sure?')">
+                    <i class='bx bx-log-out icon'></i>
+                    <span class="text nav-text">Logout</span>
+                </a>
+            </li>
+        </div>
+    </div>
+   </nav>
+
+    <% } %>
+
+    <div class="alert hide">
+        <span class="material-icons-sharp err">error</span>
+        <span class="msg">Warning: This is warning alert!</span>
+        <span class="close-btn"><span class="material-icons-sharp close">close</span></span>
+       </div>
+
+       <script>
+            $('button').click(function(){
+                $('.alert').removeClass("hide");
+                $('.alert').addClass("show");
+            });
+            $('close-btn').click(function(){
+                $('.alert').addClass("hide");
+                $('.alert').removeClass("show");
+            });
+       </script>

@@ -1,0 +1,64 @@
+<%- include('../pageHeader') %>
+
+<div class="cart-container cart-page">
+    <h3>All order
+        <span class="material-icons material-icons-sharp">
+        local_mall
+        </span></h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Your order</th>
+                <th>Order date</th>
+                <th>pay date</th>
+                <th>delivery date</th>
+                <th>status</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% orders.forEach((order) => { %>
+            <tr>
+                <td><a href="/orderDetail/<%= order.id %>">View Detail order</a></td>
+                <td><%= dayjs(order.confirm_date).format(dayFormat) %></td>
+                <td><%= dayjs(order.pay_date).format(dayFormat) %></td>
+                <td><%= dayjs(order.delivery_date).format(dayFormat) %></td>
+                <td><%= order.status %></td>
+                <td>
+                    <% if (order.status == 'awaiting payment') { %>
+                        <form action="/stript-checkout/<%= order.id %>" method="POST">
+                            <button type="submit" id="checkout-button" class="btnp"><span class="material-icons material-icons-sharp">payments</span> payment</button>
+                          </form>
+                    <% } %>
+                    <% if (order.status == 'complete' ) { %>
+                        <span class="material-icons-green material-icons-sharp">task_alt</span> payment success
+                    <% } %>
+
+                    <% if (order.status == 'delivery complete' ) { %>
+                        <a href="/reviewmainpage/<%= order.id %>">
+                            <span class="material-icons material-icons-sharp">visibility</span> review
+                        </a>
+                    <% } %>
+
+
+                        
+                </td>
+                
+                   <td> 
+                    <% if (order.status == 'awaiting payment') { %>
+                    <a href="/customerdeleteOrder/<%= order.id %>" onclick="return confirm('คุณแน่ใจที่จะลบหรือไม่?')">
+                    <span class="material-icons material-icons-sharp">delete</span>
+                    </a>
+                    <% } %>
+                
+                    
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+
+<%- include('../pageFooter') %>

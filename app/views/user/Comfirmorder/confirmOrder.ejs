@@ -1,0 +1,56 @@
+<%- include('../pageHeader') %>
+
+    <div class="cart-pageconfirm">
+        <h3>ที่อยู่ในการจัดส่ง <span class="material-icons material-symbols-outlined">
+                order_approve
+            </span></h3>
+        <form method="post">
+            <div class="radio-title-group">
+            <div class="radiogroup">
+            <% uaddress.forEach((useraddress)=> { %>
+                <input type="radio" name="address_id" value="<%= useraddress.id %>" />
+                <div class="radiotitle">
+                    <div>
+                        <%= useraddress.name %>
+                        เบอร์โทรศัพท์: <%= useraddress.phone %>
+                    </div>
+                    <div>
+                        บ้านเลขที่ <%= useraddress.home_number %>
+                            หมู่ <%= useraddress.mu_number %>
+                                ตำบล<%= useraddress.tambun %>
+                    </div>
+                    <div>
+                        อำเภอ<%= useraddress.district %>,
+                            จังหวัด<%= useraddress.province %>,
+                                <%= useraddress.zip_code %>
+                    </div>
+                </div>
+            <% }) %>
+            <a class="btn" href="/addNewaddress">
+                <span class="material-icons material-symbols-outlined">
+                    add_box
+                </span>
+                Add
+            </a>
+            <div>
+                <button type="submit" class="btn">
+                    confirm order
+                </button>
+            </div>
+        </div>
+            
+                
+            </div>
+        </form>
+    </div>
+    <div class="showalerterror">
+        <% if(typeof alert != 'undefined') { %>
+            <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+                    <%= error.msg %>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+
+<%- include('../pageFooter') %>

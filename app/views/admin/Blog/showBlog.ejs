@@ -1,0 +1,47 @@
+<%- include('../header') %>
+<main>
+    <div class="recent-orders">
+            <h2 class="card-title h2">
+                <i class="bi bi-person-badge"></i>
+                บทความ
+            </h2>
+            <a class="btn btn-info mt-3" href="/addBlog">
+                <span class="material-icons-sharp">
+                    add
+                    </span>
+                 เพิ่มบทความ
+            </a>
+            <table class="table table-bordered table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th width="300px">Image</th>
+                        <th width="300px">Title</th>
+                        <th class="hid">Detail</th>
+                        <th width="170px"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% blogs.forEach((blog)=> { %>
+                        <tr>
+                            <td><img src="designimg/<%= blog.img %>"/></td>
+                            <td>
+                                <%= blog.title %>
+                            </td>
+                            <td class="hid">
+                                <%= blog.detail %>
+                            </td>
+                            <td>
+                                <a class="btn btn-info" href="/editblog/<%= blog.id %>">
+                                    <i class='bx bx-edit icon'></i>
+                                </a>
+                                <a class="btn btn-danger" href="/deleteblog/<%= blog.id %>" onclick="return confirm('คุณแน่ใจที่จะลบหรือไม่?')">
+                                    <i class='bx bxs-trash icon' ></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+    </div>
+</main>
+<%- include('../footer') %>

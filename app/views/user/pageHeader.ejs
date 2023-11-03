@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pet shop</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://js.stripe.com/v3/"></script>
+    <link href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+    <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+
+
+<body>
+
+    <header class="header">
+        <a href="/" class="logo"><i class="fas fa-shopping-basket"></i> pet shop</a>
+        <nav class="navbar">
+            <a href="/#home">home</a>
+            <a href="/#features">features</a>
+            <a href="/#products">products</a>
+            <a href="/#categories">categories</a>
+            <a href="/blog">blogs</a>
+        </nav>
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <div class="fas fa-search" id="search-btn"></div>
+            <a href="/favorite"><div class="fas fa-heart"></div></a>
+            <a href="/cart">
+                <div class="fas fa-shopping-cart" id="cart-btn">
+                    <span><% if (session.cart !=undefined) { %>
+                        <%= session.cart.length %>
+                            <% } %></span></div>
+                
+            </a>
+            <a href="/paymainpage"><div class="fas fa-credit-card"></div></a>
+            <a href="/trackOrder"><div class="fas fa-truck" ></div></a>
+            <div class="fas fa-user" id="login-btn"></div>
+        </div>
+        <form action="" class="search-form">
+            <input type="text" name="search" id="search-box" placeholder="search here...">
+            <button for="search-box" class="fas fa-search" type="submit">
+            </button>
+
+        </form>
+        <div class="login-form">
+            <% if (session.user ==undefined) { %>
+                <a class="btn" href="/login">
+                    Login
+                </a>
+                <% } %>
+            <% if (session.user !=undefined) { %>
+            <div><h3>Your Profile <a href="/userProfile"><i class="fas fa-edit"></i></a></h3></div>
+            <div class="box">name: <%= session.name %></div>
+            <div class="box">username: <%= session.username %></div>
+            <div class="box">email: <%= session.email %></div>
+            <a class="btn" href="/logout" onclick="return confirm('Are you sure?')">
+                Logout
+            </a>
+            <% } %>
+        </div>
+
+    </header>
+
+
+
+
+    
+    

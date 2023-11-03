@@ -1,0 +1,68 @@
+<%- include('../pageHeader') %>
+<section>
+        <div class="features">
+            <div class="box-container">
+                <div class="box-track">
+                    <h3>Your order Detail</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th></th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% orderDetails.forEach((orderDetail)=> { %>
+                                <tr>
+                                    <td><img src="../images/<%= orderDetail.img %>" width="150px" /></td>
+                                    <td><%= orderDetail.name %></td>
+                                    <td><%= numeral(orderDetail.price).format() %></td>
+                                    <td><%= numeral(orderDetail.qty).format() %></td>
+                                    <td><%= numeral(orderDetail.qty * orderDetail.price).format() %></td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+
+                    <table class="total-price">
+                        <tr>
+                            <td class="text-left">Total Quantity:</td>
+                            <td>
+                                <%= numeral(totalQty).format() %> ชิ้น
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Total Price:</td>
+                            <td>$ <%= numeral(totalPrice).format() %> บาท</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="box-container">
+            <form method="post" enctype="multipart/form-data">
+                <div class="box-trackpay">
+                    <h3>บันทึกการรับชำระเงิน บิล : <%= orderId %>
+                    </h3>
+                    <h3>วันที่ชำระเงิน</h3>
+                    <input type="date" name="pay_date" required
+                    oninvalid="setCustomValidity('Date is required')"
+                    oninput="setCustomValidity('')" />
+                    <h3>รูปภาพ</h3>
+                    <input type="file" name="img" required
+                    oninvalid="setCustomValidity('Image of proof of payment is required')"
+                    oninput="setCustomValidity('')"/>
+                    <h3>หมายเหตุเพิ่มเติม</h3>
+                    <input type="text" name="pay_remark" />
+                    
+                    <div><button class="btn" type="submit">
+                        Save
+                    </button></div>
+                </div>
+            </form>
+            </div>
+        </div>
+</section>
+    <%- include('../pageFooter') %>

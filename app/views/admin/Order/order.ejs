@@ -1,0 +1,69 @@
+<%- include('../header') %>
+
+<main>
+    <div class="recent-orders">
+        <h2>รายการสั่งซื้อจากลูกค้าที่ยังไม่ได้จัดส่ง, ยังไม่ได้ชำระเงิน</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="200px">bill detail</th>
+                    <th class="hid">pay_date</th>
+                    <th class="hid">delivery_date</th>
+                    <th>truck</th>
+                    <th>status</th>
+                    <th width="120px">delivery_confirm</th>
+                    <th width="120px">delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach((order)=> { %>
+                    <% if (order.status != 'delivery complete') { %>
+                    <tr>
+                        <td><a href="/viewbill/<%= order.id %>">view bill no.<%= order.id %></a></td>
+                        <td class="hid"><%= dayjs(order.pay_date).format(dayFormat) %></td>
+                        <td class="hid"><%= dayjs(order.delivery_date).format(dayFormat) %></td>
+                        <td><%= order.track_code %></td>
+                        <td><%= order.status %></td>
+                        <td>
+                                <a href="deliveryOrder/<%= order.id %>"><span class="material-icons-sharp">local_shipping</span></a>
+                        </td>
+                        <td>
+                            <a href="deleteOrder/<%= order.id %>" onclick="return confirm('Are you sure delete ?')"><span class="material-icons-sharp">delete</span></a>
+                        </td>
+                    </tr>
+                    <% } %>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <div class="recent-orders">
+        <h2>รายการสั่งซื้อจากลูกค้า จัดส่งสำเร็จ</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="200px">bill detail</th>
+                    <th class="hid">pay_date</th>
+                    <th class="hid">delivery_date</th>
+                    <th>truck</th>
+                    <th>status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach((order)=> { %>
+                <% if (order.status == 'delivery complete') { %>
+                    <tr>
+                        <td><a href="/viewbill/<%= order.id %>">view bill no.<%= order.id %></a></td>
+                        <td class="hid"><%= dayjs(order.pay_date).format(dayFormat) %></td>
+                        <td class="hid"><%= dayjs(order.delivery_date).format(dayFormat) %></td>
+                        <td><%= order.track_code %></td>
+                        <td><%= order.status %></td>
+                    </tr>
+                    <% } %>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+
+<%- include('../footer') %>

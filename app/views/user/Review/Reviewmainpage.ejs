@@ -1,0 +1,47 @@
+<%- include('../pageHeader') %>
+
+<section>
+<div class="cart-container cart-page">
+    <h3>Your order Detail</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th></th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% orderDetails.forEach((orderDetail) => { %>
+            <tr>
+                <td><img src="../images/<%= orderDetail.img %>" width="150px" /></td>
+                <td><%= orderDetail.name %></td>
+                <td><%= numeral(orderDetail.price).format() %></td>
+                <td><%= numeral(orderDetail.qty).format() %></td>
+                <td><%= numeral(orderDetail.qty * orderDetail.price).format() %></td>
+                <td><a href="/review/<%= orderDetail.product_id %>">รีวิว</a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <table class="total-price">
+            <tr>
+                <td class="text-left">Total Quantity:</td>
+                <td><%= numeral(totalQty).format() %> ชิ้น</td>
+            </tr>
+            <tr>
+                <td class="text-left">Total Price:</td>
+                <td>$ <%= numeral(totalPrice).format() %> บาท</td>
+            </tr>
+    </table> 
+    <div class="btngoback"><a href="/paymainpage"><span class="material-symbols-outlined">
+        arrow_back
+        </span> back</a></div>
+</div>
+</section>
+
+<%- include('../pageFooter') %>
